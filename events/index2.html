@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeout</title>
+</head>
+<body>
+    <h1>Hello</h1>
+    <p>this heading will change in 2 seconds unless the stop button is pressed</p>
+    <button>stop</button>
+</body>
+<script>
+    // setTimeout( () => {
+    //     console.log("hello")
+    // }, 2000)
+
+    const changeH1 = () => {
+        document.querySelector('h1').innerHTML = "Yellow"
+        console.log("heading changed")
+    }
+
+    const timer = setTimeout( changeH1, 2000)
+
+    document.querySelector('button').addEventListener('click', (e) => {
+        clearTimeout(timer)
+        console.log("heading kept same")
+    })
+</script>
+</html>

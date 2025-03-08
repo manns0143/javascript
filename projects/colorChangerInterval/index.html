@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Colors</title>
+</head>
+<body>
+    <h1>Click a button for infinite colors</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    const body = document.querySelector('body')
+    let interval
+
+    function generateColor() {
+        const hexVals = "0123456789ABCDEF"
+        let color = "#"
+        for (let i=0; i<6; i++) {
+            color += hexVals.charAt(Math.floor(Math.random() * 16))
+        }
+        console.log(color)
+        return color
+    }
+
+    document.querySelector('#start').addEventListener('click', startChangingColor)
+    document.querySelector('#stop').addEventListener('click', stopChangingColor)
+
+    function startChangingColor() {
+        function setBGColor() {
+            body.style.backgroundColor = generateColor()
+        }
+
+        interval = setInterval(setBGColor, 1000)
+    }
+
+    function stopChangingColor() {
+        clearInterval(interval)
+        interval = null
+    }
+</script>
+</html>

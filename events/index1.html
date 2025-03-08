@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events</title>
+  </head>
+  <style>
+    html {
+      margin: 0;
+    }
+
+    span {
+      display: block;
+    }
+
+    #container {
+      margin: 100px auto 100px;
+      width: 80%;
+      text-align: center;
+    }
+
+    .button {
+      width: 100px;
+      height: 100px;
+      border: solid black 2px;
+      display: inline-block;
+    }
+
+    #red {
+      background: red;
+    }
+
+    #green {
+      background: green;
+    }
+
+    #blue {
+      background: blue;
+    }
+
+    #yellow {
+      background: yellow;
+    }
+  </style>
+  <body>
+    <div id="container">
+      <h1>Colors</h1>
+      <ul id="colors">
+        <li>
+          <span class="button" id="red"></span>
+        </li>
+        <li>
+          <span class="button" id="green"></span>
+        </li>
+        <li>
+          <span class="button" id="blue"></span>
+        </li>
+        <li>
+          <span class="button" id="yellow"></span>
+        </li>
+        <li>
+          <a href="https://www.google.com/" id="google">Google</a>
+        </li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    const container = document.getElementById("container");
+    const red = document.getElementById("red");
+
+    // container.addEventListener('click', (event) => {
+    //     console.log(event.target.id)
+    //     console.log(`container clicked`)
+    // }, true)
+
+    // red.addEventListener('click', (event) => {
+    //     console.log(event.target.id)
+    //     console.log(`red clicked`)
+    // }, true)
+
+    container.addEventListener("click", (event) => {
+      // console.log(event.target.id)
+      console.log(`container clicked`);
+    });
+
+    red.addEventListener("click", (event) => {
+      // console.log(event.target.id)
+      console.log(`red clicked`);
+      // event.stopPropagation()
+    });
+
+    document.getElementById("google").addEventListener("click", (event) => {
+      event.preventDefault();
+      // event.stopPropagation()
+      console.log("google clicked");
+    });
+
+    document.querySelector("#colors").addEventListener("click", (event) => {
+      // console.log(event.target)
+      // console.log(event.target.id)
+      // console.log(event.target.parentNode)
+      // console.log(event.target.tagName)
+      if (event.target.tagName === "SPAN") {
+        const color = event.target.parentNode;
+        color.remove();
+      }
+    });
+  </script>
+</html>

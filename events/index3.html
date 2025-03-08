@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intervals</title>
+</head>
+<body>
+    <h1>Counting</h1>
+    <button id="start">start counting</button>
+    <button id="stop">stop counting</button>
+</body>
+<script>
+    // setInterval(() => {
+    //     console.log('hello')
+    // }, 1000)
+    let curr = 1
+    let clearInt
+
+    const count = () => {
+        console.log(curr++)
+    }
+
+    document.querySelector('#start').addEventListener('click', () => {
+        clearInt = setInterval(count, 1000)
+    })
+
+    document.querySelector('#stop').addEventListener('click', () => {
+        clearInterval(clearInt)
+        curr = 1
+    })
+</script>
+</html>
