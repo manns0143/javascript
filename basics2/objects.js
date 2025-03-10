@@ -49,3 +49,13 @@ console.log(Object.entries(user))
 // console.log(user.name)
 const { name: userName } = user
 console.log(userName)
+
+const userInfo = {
+    name: "lily",
+    gender: "female",
+    age: 25,
+    printThis: function() {
+        console.log(this) // 'this' keyword provides context
+    }
+}
+userInfo.printThis()
