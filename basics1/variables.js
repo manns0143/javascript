@@ -15,3 +15,21 @@ console.table([id, name, email, place])
 
 let pincode;
 console.log(pincode) // undefined;
+
+// hoisting in javascript
+// console.log(a) --> error
+let a
+console.log(a) // --> undefined
+a = 10
+
+console.log(b) // --> undefined
+var b = 20
+
+greet1() // --> prints hello world
+function greet1() {
+    console.log("hello world1")
+}
+// greet2() --> error
+var greet2 = function() {
+    console.log("hello world2")
+}
