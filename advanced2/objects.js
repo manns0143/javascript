@@ -51,3 +51,33 @@ const field = {
 // field.__proto__ = user --> old syntax
 Object.setPrototypeOf(field, user) // --> modern syntax
 console.log(field.name)
+
+// .getOwnPropertyDescriptor and .defineProperty
+console.log(Math.PI)
+const pi = Object.getOwnPropertyDescriptor(Math, "PI")
+console.log(pi)
+
+const product = {
+    name: "iphone",
+    price: 106000,
+    isAvailable: true,
+    version: function() {
+        console.log("introducing the new iphone 16 pro max")
+    }
+}
+
+Object.defineProperty(product, "name", {
+    writable: false, // --> does not allow to modify the property
+    enumerable: false // --> does not allow to iterate over the property
+})
+
+product.name = "galaxy ultra"
+console.log(product)
+
+console.log(Object.getOwnPropertyDescriptor(product, "name"))
+for (const [key, value] of Object.entries(product)) {
+    // console.log(typeof value)
+    if (typeof value !== "function") {
+        console.log(`${key} : ${value}`)
+    }
+}
