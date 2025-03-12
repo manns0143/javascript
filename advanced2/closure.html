@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lexical Scope and Closure</h1>
+    <button id="red">Red</button>
+    <button id="blue">Blue</button>
+</body>
+<script>
+    function func() {
+        let name = "mann"
+        function displayName() {
+            console.log(name)
+        }
+        return displayName
+    }
+    const myFunc = func()
+    myFunc()
+    // func()()
+
+    
+    function handleClick(color) {
+        return function() {
+            document.body.style.backgroundColor = color
+        }
+    }
+    document.getElementById('red').addEventListener('click', handleClick("red"))
+    document.getElementById('blue').addEventListener('click', handleClick("blue"))
+
+</script>
+</html>
